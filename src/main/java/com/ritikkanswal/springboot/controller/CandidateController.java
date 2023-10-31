@@ -1,9 +1,15 @@
 package com.ritikkanswal.springboot.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +27,15 @@ public class CandidateController {
 	@GetMapping("/candidates")
 	public List<Candidate>getAllCandidates(){
 		return candidateRepository.findAll();
+	}
+	
+	// get all candidates
+	@PostMapping("/addCandidate")
+	public List<Candidate>addCandidate(@RequestBody Candidate candidate){
+		List<Candidate>res=new ArrayList<>();
+		res.add(candidate);
+		candidateRepository.save(candidate);
+		return res;
 	}
 	
 	

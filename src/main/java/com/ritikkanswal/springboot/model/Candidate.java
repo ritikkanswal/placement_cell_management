@@ -19,6 +19,7 @@ import lombok.Setter;
 @Table(name="candidates")
 public class Candidate {
 	
+	@Getter
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
@@ -27,54 +28,22 @@ public class Candidate {
 	@Column(name="first_name")
 	private String firstName;
 	
+	@Getter
 	@Column(name="last_name")
 	private String lastName;
 	
+	
+	@Getter
 	@Column(name="email_id")
 	private String emailId;
 	
-	@Column(name="college")
+	@Getter
 	@ManyToOne
-	@JoinColumn(name="college_id")
 	private College college;
 	
+	@Getter
+	@Setter
 	@Column(name="gender")
 	private String gender;
-//	
-	public long getId() {
-		return id;
-	}
-	
-	
-	public Candidate()
-	{
-		
-	}
-	public Candidate(String firstName, String lastName, String emailId) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailId = emailId;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getEmailId() {
-		return emailId;
-	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
+
 }
